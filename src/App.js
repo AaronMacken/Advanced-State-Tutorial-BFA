@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Footer from "./components/Footer";
+import FormSection from './components/FormSection';
+import PostsSection from './components/PostsSection';
+import Navbar from "./components/Navbar";
+
+const INITIAL_STATE = {
+  posts: [
+    {
+      title: "post one",
+      description: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.`,
+      id: 1
+    },
+    {
+      title: "post two",
+      description: `Eveniet quae eos, accusamus quibusdam praesentium et.`,
+      id: 2
+    }
+  ],
+};
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = INITIAL_STATE;
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar numberOfPosts={this.state.posts.length} />
+        <FormSection />
+        <PostsSection posts={this.state.posts} />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
