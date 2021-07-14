@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import uniqid from 'uniqid';
+
 const DEFAULT_FORM_STYLES = {
     width: '100%',
     margin: 'auto'
@@ -24,12 +26,21 @@ export default class Form extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        alert('submitted');
+        const { title, description } = this.state;
+
+        const formData = {
+            title,
+            description,
+            id: uniqid()
+        }
+
+        this.props.addPostMethod(formData);
 
         this.setState(INITIAL_STATE);
     }
     
     render() {
+
         return (
             <form className="p-5" style={this.props.styles || DEFAULT_FORM_STYLES} onSubmit={this.handleSubmit}>
                 <div className="mb-3">

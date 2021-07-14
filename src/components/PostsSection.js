@@ -7,8 +7,12 @@ export default class PostsSection extends Component {
 
     renderPosts = () => {
         return this.props.posts.map(post => (
-          <div className="col-12 col-sm-6">
-            <Card title={post.title} description={post.description} id={post.id} />
+          <div key={post.id} className="col-12 col-sm-6">
+            <Card 
+              title={post.title} 
+              description={post.description} 
+              id={post.id} 
+              deletePost={this.props.deletePost} />
           </div>
         ));
     }

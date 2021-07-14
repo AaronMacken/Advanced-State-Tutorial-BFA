@@ -11,7 +11,7 @@ export default class FormSection extends Component {
                 <div className="row">
                   <div className="col-12">
                     <h1>Create a post!</h1>
-                    <Form styles={{ width: '50%', margin: 'auto' }}/>
+                    <Form addPostMethod={this.props.addPost} styles={{ width: '50%', margin: 'auto' }}/>
                   </div>
                 </div>
               </div>

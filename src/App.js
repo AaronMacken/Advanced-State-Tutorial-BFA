@@ -27,12 +27,26 @@ class App extends React.Component {
     this.state = INITIAL_STATE;
   }
 
+  addPost = (postData) => {
+      const posts = [ ...this.state.posts, postData ];
+
+      this.setState({ posts })
+  }
+
+  deletePost = (clickedId) => {
+    const posts = this.state.posts.filter((post) => {
+        return post.id !== clickedId
+    });
+
+    this.setState({ posts })
+  }
+
   render() {
     return (
       <div className="App">
         <Navbar numberOfPosts={this.state.posts.length} />
-        <FormSection />
-        <PostsSection posts={this.state.posts} />
+        <FormSection addPost={this.addPost} />
+        <PostsSection deletePost={this.deletePost} posts={this.state.posts} />
         <Footer />
       </div>
     );

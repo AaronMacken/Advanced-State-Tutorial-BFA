@@ -2,6 +2,15 @@ import React, { Component, Fragment } from "react";
 import Form from './Form';
 
 export default class Card extends Component {
+
+    delete = () => {
+        const { deletePost, id } = this.props;
+
+        console.log('delete');
+
+        deletePost(id);
+    }
+
   render() {
     return (
     <Fragment>
@@ -15,7 +24,7 @@ export default class Card extends Component {
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#modal-${this.props.id}`}>
                 Edit
             </button>
-            <button class="btn btn-danger ms-3">
+            <button class="btn btn-danger ms-3" onClick={this.delete}>
                 Delete
             </button>
             </div>
